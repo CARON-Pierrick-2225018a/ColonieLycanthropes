@@ -95,4 +95,9 @@ public class Lycanthrope {
     public void setMeute(String meute) {
         this.meute = meute;
     }
+    // Méthode pour calculer le niveau en fonction des caractéristiques
+    private int calculerNiveau() {
+        // Exemple de calcul simple
+        return force * rangDomination;
+    }
 }
