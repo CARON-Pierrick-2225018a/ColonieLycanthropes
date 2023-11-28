@@ -103,16 +103,19 @@ public class Lycanthrope {
 
     @Override
     public String toString() {
-        return "Lycanthrope{" +
-                "nom='" + nom + '\'' +
-                ", sexe='" + sexe + '\'' +
-                ", categorieAge='" + categorieAge + '\'' +
-                ", force=" + force +
-                ", facteurDomination=" + facteurDomination +
-                ", rangDomination=" + rangDomination +
-                ", niveau=" + niveau +
-                ", facteurImpetuosite=" + facteurImpetuosite +
-                ", meute='" + meute + '\'' +
-                '}';
+        return "==========Lycanthrope===========\n" +
+                "Lycanthrope" +
+                "\n\t nom='" + nom + '\'' +
+                "\n\t sexe='" + sexe + '\'' +
+                "\n\t categorieAge='" + categorieAge + '\'' +
+                "\n\t force=" + force +
+                "\n\t facteurDomination=" + facteurDomination +
+                "\n\t rangDomination=" + rangDomination +
+                "\n\t niveau=" + niveau +
+                "\n\t facteurImpetuosite=" + facteurImpetuosite +
+                "\n\t meute='" + meute + '\'' +
+                "\n}\n" +
+                "================================";
     }
+
 }
