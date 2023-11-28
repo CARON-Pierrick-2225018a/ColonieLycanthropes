@@ -100,4 +100,19 @@ public class Lycanthrope {
         // Exemple de calcul simple
         return force * rangDomination;
     }
+
+    @Override
+    public String toString() {
+        return "Lycanthrope{" +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", categorieAge='" + categorieAge + '\'' +
+                ", force=" + force +
+                ", facteurDomination=" + facteurDomination +
+                ", rangDomination=" + rangDomination +
+                ", niveau=" + niveau +
+                ", facteurImpetuosite=" + facteurImpetuosite +
+                ", meute='" + meute + '\'' +
+                '}';
+    }
 }
