@@ -18,6 +18,7 @@ public class Lycanthrope {
     private String meute;
     private boolean estEnTrainDeDormir;
     private boolean estMalade;
+    private boolean aHurler;
 
     // Constructeur
     public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite, String meute) {
@@ -32,7 +33,7 @@ public class Lycanthrope {
         this.meute = meute;
         this.estMalade = false;//Pas malade par default
         this.estEnTrainDeDormir = false;//Ne dors pas par default
-
+        this.aHurler = false; // Par défault aucun loup n'a hurler
         // Ajouter le nouveau loup-garou à la liste
         lycanthropes.add(this);
     }
@@ -113,6 +114,9 @@ public class Lycanthrope {
         // Exemple de calcul simple
         return force * rangDomination;
     }
+    public boolean aHurle() {
+        return aHurler;
+    }
     // Méthode statique pour afficher les informations de tous les lycanthropes
     public static void afficherInformationsLycanthropes() {
         if (lycanthropes.isEmpty()) {
@@ -183,7 +187,7 @@ public class Lycanthrope {
             System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
             System.out.println("1. Hurler pour communiquer ");
             System.out.println("2. Entendre un hurlement");
-            System.out.println("3. Action 3");
+            System.out.println("3. Afficher les données du loup ");
             System.out.println("4. Retour au menu principal");
 
             System.out.print("Faites votre choix : ");
@@ -197,7 +201,7 @@ public class Lycanthrope {
                     lycanthrope.entendreHurlement(); // Appeler une autre méthode d'action spécifique du loup-garou
                     break;
                 case 3:
-                    lycanthrope.action3(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    lycanthrope.afficherDonner(lycanthrope); // Appeler une autre méthode d'action spécifique du loup-garou
                     break;
                 case 4:
                     System.out.println("Retour au menu principal.");
@@ -211,21 +215,43 @@ public class Lycanthrope {
     // Méthode d'action spécifique du loup-garou (exemple)
     private void hurlerPourCommuniquer() {
         System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres lycanthropes.");
+        this.aHurler = true;
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
     public void entendreHurlement() {
-        if (!estEnTrainDeDormir && !estMalade) {
+        // Vérifier si au moins un loup a hurlé
+        boolean auMoinsUnHurlement = false;
+        for (Lycanthrope loup : lycanthropes) {
+            if (loup != this && loup.aHurle()) {
+                auMoinsUnHurlement = true;
+                break;
+            }
+        }
+
+        if (!estEnTrainDeDormir && !estMalade && auMoinsUnHurlement) {
             System.out.println("Le loup-garou " + this.nom + " entend un hurlement.");
-            System.out.println("Le loup-garou " + this.nom + " répond au hurlement.");
+
+            // Exclure le loup-garou actuel de la liste des loup-garous à entendre
+            List<Lycanthrope> loupGarousAEntendre = new ArrayList<>(lycanthropes);
+            loupGarousAEntendre.remove(this);
+
+            // Simuler la réponse au hurlement pour chaque loup-garou à entendre
+            for (Lycanthrope loupAGarder : loupGarousAEntendre) {
+                System.out.println("Le loup-garou " + this.nom + " répond au hurlement de " + loupAGarder.getNom());
+            }
         } else {
-            System.out.println("Le loup-garou " + this.nom + " ne peut pas entendre le hurlement car il dort ou est malade.");
+            System.out.println("Le loup-garou " + this.nom + " ne peut pas entendre le hurlement car il dort, est malade ou aucun loup n'a hurlé.");
         }
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
-    private void action3() {
-        System.out.println("Le loup-garou effectue l'action 3.");
+    private void afficherDonner(Lycanthrope lycanthropeChoisi) {
+        if (lycanthropeChoisi != null) {
+            System.out.println(lycanthropeChoisi.toString());
+        } else {
+            System.out.println("Aucun loup-garou choisi.");
+        }
     }
 
     @Override
@@ -240,7 +266,7 @@ public class Lycanthrope {
                 "\n\t niveau=" + niveau +
                 "\n\t facteurImpetuosite=" + facteurImpetuosite +
                 "\n\t meute='" + meute + '\'' +
-                "================================";
+                "\n\t ================================";
     }
 
 }
