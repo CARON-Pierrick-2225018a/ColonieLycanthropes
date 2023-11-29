@@ -161,6 +161,7 @@ public class Lycanthrope {
         } else {
             System.out.println("Aucun loup-garou disponible.");
         }
+
     }
     // Méthode pour afficher un menu d'actions pour un loup-garou choisi
     public static void afficherMenuActions(Lycanthrope lycanthrope) {
@@ -177,7 +178,7 @@ public class Lycanthrope {
 
             switch (choix) {
                 case 1:
-                    lycanthrope.action1(); // Appeler la méthode d'action spécifique du loup-garou
+                    lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
                     break;
                 case 2:
                     lycanthrope.action2(); // Appeler une autre méthode d'action spécifique du loup-garou
@@ -195,8 +196,8 @@ public class Lycanthrope {
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
-    private void action1() {
-        System.out.println("Le loup-garou effectue l'action 1.");
+    private void hurlerPourCommuniquer() {
+        System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres lycanthropes.");
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
