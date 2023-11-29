@@ -19,6 +19,7 @@ public class Lycanthrope {
     private boolean estEnTrainDeDormir;
     private boolean estMalade;
     private boolean aHurler;
+    private String statut;
 
     // Constructeur
     public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite, String meute) {
@@ -34,6 +35,7 @@ public class Lycanthrope {
         this.estMalade = false;//Pas malade par default
         this.estEnTrainDeDormir = false;//Ne dors pas par default
         this.aHurler = false; // Par défault aucun loup n'a hurler
+        this.statut = "humain"; //Par défault il est humain
         // Ajouter le nouveau loup-garou à la liste
         lycanthropes.add(this);
     }
@@ -188,7 +190,11 @@ public class Lycanthrope {
             System.out.println("1. Hurler pour communiquer ");
             System.out.println("2. Entendre un hurlement");
             System.out.println("3. Afficher les données du loup ");
-            System.out.println("4. Retour au menu principal");
+            System.out.println("4. Séparer de la meute ");
+            System.out.println("5. Se transformer en humain ");
+            System.out.println("6. Se transformer en loup  ");
+            System.out.println("7. Retour au menu principal");
+            System.out.println("8. Choisir un autre Loup ");
 
             System.out.print("Faites votre choix : ");
             choix = scanner.nextInt();
@@ -204,7 +210,19 @@ public class Lycanthrope {
                     lycanthrope.afficherDonner(lycanthrope); // Appeler une autre méthode d'action spécifique du loup-garou
                     break;
                 case 4:
+                    lycanthrope.seSeparerDeMeute();
+                    break;
+                case 5:
+                    lycanthrope.seTransformerEnHumain();
+                    break;
+                case 6:
+                    lycanthrope.seTransformerEnLoup();
+                    break;
+                case 7:
                     System.out.println("Retour au menu principal.");
+                    break;
+                case 8:
+                    lycanthrope.choisirLoupGarou();
                     break;
                 default:
                     System.out.println("Choix invalide. Veuillez réessayer.");
@@ -253,6 +271,44 @@ public class Lycanthrope {
             System.out.println("Aucun loup-garou choisi.");
         }
     }
+    public void seSeparerDeMeute() {
+        if (this.meute != null) {
+            System.out.println("Le loup-garou " + this.nom + " se sépare de sa meute.");
+            this.meute = null;
+        } else {
+            System.out.println("Le loup-garou " + this.nom + " n'appartient actuellement à aucune meute.");
+        }
+    }
+    public void seTransformerEnHumain() {
+        if (!estHumain()) {
+            System.out.println("Le loup-garou " + this.nom + " se transforme en humain.");
+            this.statut = "humain"; // Mettez à jour le statut en humain
+            // Ajoutez ici le code pour gérer la transformation en humain
+        } else {
+            System.out.println("Le loup-garou " + this.nom + " est déjà un humain.");
+        }
+    }
+
+    public void seTransformerEnLoup() {
+        if (!estLoup()) {
+            System.out.println("Le loup-garou " + this.nom + " se transforme en loup.");
+            this.statut = "loup"; // Mettez à jour le statut en loup
+            // Ajoutez ici le code pour gérer la transformation en loup
+        } else {
+            System.out.println("Le loup-garou " + this.nom + " est déjà un loup.");
+        }
+    }
+
+    // Méthode auxiliaire pour vérifier si le loup-garou est déjà un humain
+    private boolean estHumain() {
+        return this.statut.equals("humain");
+    }
+
+    // Méthode auxiliaire pour vérifier si le loup-garou est déjà un loup
+    private boolean estLoup() {
+        return this.statut.equals("loup");
+    }
+
 
     @Override
     public String toString() {
