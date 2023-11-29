@@ -150,8 +150,15 @@ public class Lycanthrope {
         Lycanthrope.afficherInformationsLycanthropes();
 
         if (!lycanthropes.isEmpty()) {
-            System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
-            int choixLoupGarou = scanner.nextInt();
+            int choixLoupGarou;
+
+            if (lycanthropes.size() == 1) {
+                // S'il n'y a qu'un loup-garou, le choisissez automatiquement
+                choixLoupGarou = 1;
+            } else {
+                System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
+                choixLoupGarou = scanner.nextInt();
+            }
 
             if (choixLoupGarou >= 1 && choixLoupGarou <= lycanthropes.size()) {
                 // L'utilisateur a choisi un loup-garou valide
@@ -165,7 +172,6 @@ public class Lycanthrope {
         } else {
             System.out.println("Aucun loup-garou disponible.");
         }
-
     }
     // Méthode pour afficher un menu d'actions pour un loup-garou choisi
     public static void afficherMenuActions(Lycanthrope lycanthrope) {
@@ -231,7 +237,6 @@ public class Lycanthrope {
                 "\n\t niveau=" + niveau +
                 "\n\t facteurImpetuosite=" + facteurImpetuosite +
                 "\n\t meute='" + meute + '\'' +
-                "\n}\n" +
                 "================================";
     }
 
