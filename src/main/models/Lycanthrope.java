@@ -118,8 +118,10 @@ public class Lycanthrope {
         if (lycanthropes.isEmpty()) {
             System.out.println("Aucun loup-garou à afficher.");
         } else {
-            for (Lycanthrope lycanthrope : lycanthropes) {
-                System.out.println(lycanthrope.toString());
+            System.out.println("Liste des loup-garous :");
+            for (int i = 0; i < lycanthropes.size(); i++) {
+                Lycanthrope lycanthrope = lycanthropes.get(i);
+                System.out.println(i + 1 + ". " + lycanthrope.getNom() + " (" + lycanthrope.getSexe() + ")");
             }
         }
     }
@@ -146,7 +148,6 @@ public class Lycanthrope {
         System.out.println("Loup-garou ajouté avec succès !");
     }
     public static void choisirLoupGarou() {
-        System.out.println("Liste des loup-garous :");
         Lycanthrope.afficherInformationsLycanthropes();
 
         if (!lycanthropes.isEmpty()) {
