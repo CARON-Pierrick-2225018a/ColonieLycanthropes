@@ -154,6 +154,7 @@ public class Lycanthrope {
                 Lycanthrope lycanthropeChoisi = lycanthropes.get(choixLoupGarou - 1);
                 // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
                 System.out.println("Vous avez choisi le loup-garou : " + lycanthropeChoisi.getNom());
+                afficherMenuActions(lycanthropeChoisi);
             } else {
                 System.out.println("Numéro invalide. Veuillez réessayer.");
             }
@@ -162,7 +163,7 @@ public class Lycanthrope {
         }
     }
     // Méthode pour afficher un menu d'actions pour un loup-garou choisi
-    private static void afficherMenuActions(Lycanthrope lycanthrope) {
+    public static void afficherMenuActions(Lycanthrope lycanthrope) {
         int choix;
         do {
             System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
