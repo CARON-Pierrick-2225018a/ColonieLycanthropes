@@ -141,6 +141,26 @@ public class Lycanthrope {
 
         System.out.println("Loup-garou ajouté avec succès !");
     }
+    private static void choisirLoupGarou() {
+        System.out.println("Liste des loup-garous :");
+        Lycanthrope.afficherInformationsLycanthropes();
+
+        if (!lycanthropes.isEmpty()) {
+            System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
+            int choixLoupGarou = scanner.nextInt();
+
+            if (choixLoupGarou >= 1 && choixLoupGarou <= lycanthropes.size()) {
+                // L'utilisateur a choisi un loup-garou valide
+                Lycanthrope lycanthropeChoisi = lycanthropes.get(choixLoupGarou - 1);
+                // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
+                System.out.println("Vous avez choisi le loup-garou : " + lycanthropeChoisi.getNom());
+            } else {
+                System.out.println("Numéro invalide. Veuillez réessayer.");
+            }
+        } else {
+            System.out.println("Aucun loup-garou disponible.");
+        }
+    }
 
     @Override
     public String toString() {
