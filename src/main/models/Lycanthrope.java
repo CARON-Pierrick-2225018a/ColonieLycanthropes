@@ -16,6 +16,8 @@ public class Lycanthrope {
     private int niveau;
     private int facteurImpetuosite;
     private String meute;
+    private boolean estEnTrainDeDormir;
+    private boolean estMalade;
 
     // Constructeur
     public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite, String meute) {
@@ -28,6 +30,8 @@ public class Lycanthrope {
         this.niveau = calculerNiveau(); // Calcul du niveau en fonction des caractéristiques
         this.facteurImpetuosite = facteurImpetuosite;
         this.meute = meute;
+        this.estMalade = false;//Pas malade par default
+        this.estEnTrainDeDormir = false;//Ne dors pas par default
 
         // Ajouter le nouveau loup-garou à la liste
         lycanthropes.add(this);
@@ -168,8 +172,8 @@ public class Lycanthrope {
         int choix;
         do {
             System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
-            System.out.println("1. Action 1");
-            System.out.println("2. Action 2");
+            System.out.println("1. Hurler pour communiquer ");
+            System.out.println("2. Entendre un hurlement");
             System.out.println("3. Action 3");
             System.out.println("4. Retour au menu principal");
 
@@ -181,7 +185,7 @@ public class Lycanthrope {
                     lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
                     break;
                 case 2:
-                    lycanthrope.action2(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    lycanthrope.entendreHurlement(); // Appeler une autre méthode d'action spécifique du loup-garou
                     break;
                 case 3:
                     lycanthrope.action3(); // Appeler une autre méthode d'action spécifique du loup-garou
@@ -201,8 +205,13 @@ public class Lycanthrope {
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
-    private void action2() {
-        System.out.println("Le loup-garou effectue l'action 2.");
+    public void entendreHurlement() {
+        if (!estEnTrainDeDormir && !estMalade) {
+            System.out.println("Le loup-garou " + this.nom + " entend un hurlement.");
+            System.out.println("Le loup-garou " + this.nom + " répond au hurlement.");
+        } else {
+            System.out.println("Le loup-garou " + this.nom + " ne peut pas entendre le hurlement car il dort ou est malade.");
+        }
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
