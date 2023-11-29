@@ -28,6 +28,9 @@ public class Lycanthrope {
         this.niveau = calculerNiveau(); // Calcul du niveau en fonction des caractéristiques
         this.facteurImpetuosite = facteurImpetuosite;
         this.meute = meute;
+
+        // Ajouter le nouveau loup-garou à la liste
+        lycanthropes.add(this);
     }
 
     public String getNom() {
@@ -105,6 +108,31 @@ public class Lycanthrope {
     private int calculerNiveau() {
         // Exemple de calcul simple
         return force * rangDomination;
+    }
+    // Méthode statique pour afficher les informations de tous les lycanthropes
+    public static void afficherInformationsLycanthropes() {
+        if (lycanthropes.isEmpty()) {
+            System.out.println("Aucun loup-garou à afficher.");
+        } else {
+            for (Lycanthrope lycanthrope : lycanthropes) {
+                System.out.println(lycanthrope.toString());
+            }
+        }
+    }
+
+    // Méthode statique pour ajouter un nouveau loup-garou
+    public static void ajouterLoupGarou() {
+        System.out.print("Entrez le prénom du loup-garou : ");
+        String nom = scanner.next();
+
+        System.out.print("Entrez le sexe du loup-garou : ");
+        String sexe = scanner.next();
+
+        // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du loup-garou
+
+        new Lycanthrope(nom, sexe, "Adulte", 0, 0, 0, 0, "Solitaire");
+
+        System.out.println("Loup-garou ajouté avec succès !");
     }
 
     @Override
