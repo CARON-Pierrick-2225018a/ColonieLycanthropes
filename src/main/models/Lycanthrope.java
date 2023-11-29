@@ -141,7 +141,7 @@ public class Lycanthrope {
 
         System.out.println("Loup-garou ajouté avec succès !");
     }
-    private static void choisirLoupGarou() {
+    public static void choisirLoupGarou() {
         System.out.println("Liste des loup-garous :");
         Lycanthrope.afficherInformationsLycanthropes();
 

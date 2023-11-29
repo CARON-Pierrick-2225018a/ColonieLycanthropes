@@ -31,7 +31,7 @@ public class LycanthropeController {
                     Lycanthrope.ajouterLoupGarou();
                     break;
                 case 3:
-                    //choisirLoupGarou();
+                    Lycanthrope.choisirLoupGarou();
                     break;
                 case 4:
                     System.out.println("Au revoir !");
