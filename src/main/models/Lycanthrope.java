@@ -1,5 +1,7 @@
 package main.models;
 
+import main.controllers.LycanthropeController;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -227,7 +229,7 @@ public class Lycanthrope {
                 default:
                     System.out.println("Choix invalide. Veuillez réessayer.");
             }
-        } while (choix != 4);
+        } while (choix != 8);
     }
 
     // Méthode d'action spécifique du loup-garou (exemple)
@@ -257,6 +259,7 @@ public class Lycanthrope {
             // Simuler la réponse au hurlement pour chaque loup-garou à entendre
             for (Lycanthrope loupAGarder : loupGarousAEntendre) {
                 System.out.println("Le loup-garou " + this.nom + " répond au hurlement de " + loupAGarder.getNom());
+                this.aHurler=true;
             }
         } else {
             System.out.println("Le loup-garou " + this.nom + " ne peut pas entendre le hurlement car il dort, est malade ou aucun loup n'a hurlé.");
@@ -322,6 +325,7 @@ public class Lycanthrope {
                 "\n\t niveau=" + niveau +
                 "\n\t facteurImpetuosite=" + facteurImpetuosite +
                 "\n\t meute='" + meute + '\'' +
+                "\n\t Statut='" + statut + '\'' +
                 "\n\t ================================";
     }
 
