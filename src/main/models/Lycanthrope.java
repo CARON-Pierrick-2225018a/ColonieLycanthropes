@@ -125,8 +125,15 @@ public class Lycanthrope {
         System.out.print("Entrez le prénom du loup-garou : ");
         String nom = scanner.next();
 
-        System.out.print("Entrez le sexe du loup-garou : ");
+        System.out.print("Entrez le sexe du loup-garou (M/F) : ");
         String sexe = scanner.next();
+
+        // Validation de la saisie pour s'assurer que le sexe est M, m, F ou f
+        while (!sexe.matches("[MmFf]")) {
+            System.out.println("Saisie invalide. Veuillez entrer M, m, F ou f.");
+            System.out.print("Entrez le sexe du loup-garou (M/F) : ");
+            sexe = scanner.next();
+        }
 
         // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du loup-garou
 
