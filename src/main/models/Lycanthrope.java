@@ -155,6 +155,7 @@ public class Lycanthrope {
             if (lycanthropes.size() == 1) {
                 // S'il n'y a qu'un loup-garou, le choisissez automatiquement
                 choixLoupGarou = 1;
+                System.out.println("Il n'y a qu'un loup-garou disponible. Choix automatique.");
             } else {
                 System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
                 choixLoupGarou = scanner.nextInt();
@@ -164,7 +165,7 @@ public class Lycanthrope {
                 // L'utilisateur a choisi un loup-garou valide
                 Lycanthrope lycanthropeChoisi = lycanthropes.get(choixLoupGarou - 1);
                 // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
-                System.out.println("Vous avez choisi le loup-garou : " + lycanthropeChoisi.getNom());
+                System.out.println("Le loup-garou chosit est : " + lycanthropeChoisi.getNom());
                 afficherMenuActions(lycanthropeChoisi);
             } else {
                 System.out.println("Numéro invalide. Veuillez réessayer.");
@@ -173,6 +174,7 @@ public class Lycanthrope {
             System.out.println("Aucun loup-garou disponible.");
         }
     }
+
     // Méthode pour afficher un menu d'actions pour un loup-garou choisi
     public static void afficherMenuActions(Lycanthrope lycanthrope) {
         int choix;
