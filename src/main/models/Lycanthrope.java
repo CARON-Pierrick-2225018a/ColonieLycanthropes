@@ -161,6 +161,52 @@ public class Lycanthrope {
             System.out.println("Aucun loup-garou disponible.");
         }
     }
+    // Méthode pour afficher un menu d'actions pour un loup-garou choisi
+    private static void afficherMenuActions(Lycanthrope lycanthrope) {
+        int choix;
+        do {
+            System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
+            System.out.println("1. Action 1");
+            System.out.println("2. Action 2");
+            System.out.println("3. Action 3");
+            System.out.println("4. Retour au menu principal");
+
+            System.out.print("Faites votre choix : ");
+            choix = scanner.nextInt();
+
+            switch (choix) {
+                case 1:
+                    lycanthrope.action1(); // Appeler la méthode d'action spécifique du loup-garou
+                    break;
+                case 2:
+                    lycanthrope.action2(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    break;
+                case 3:
+                    lycanthrope.action3(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    break;
+                case 4:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                default:
+                    System.out.println("Choix invalide. Veuillez réessayer.");
+            }
+        } while (choix != 4);
+    }
+
+    // Méthode d'action spécifique du loup-garou (exemple)
+    private void action1() {
+        System.out.println("Le loup-garou effectue l'action 1.");
+    }
+
+    // Méthode d'action spécifique du loup-garou (exemple)
+    private void action2() {
+        System.out.println("Le loup-garou effectue l'action 2.");
+    }
+
+    // Méthode d'action spécifique du loup-garou (exemple)
+    private void action3() {
+        System.out.println("Le loup-garou effectue l'action 3.");
+    }
 
     @Override
     public String toString() {
