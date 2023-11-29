@@ -17,7 +17,8 @@ public class LycanthropeController {
             System.out.println("\nMenu Lycanthrope");
             System.out.println("1. Afficher les informations du lycanthrope");
             System.out.println("2. Ajouter un nouveau loup-garou");
-            System.out.println("3. Quitter");
+            System.out.println("3. Choisir un loup-garou");
+            System.out.println("4. Quitter");
 
             System.out.print("Faites votre choix : ");
             choix = scanner.nextInt();
@@ -30,11 +31,15 @@ public class LycanthropeController {
                     Lycanthrope.ajouterLoupGarou();
                     break;
                 case 3:
+                    //choisirLoupGarou();
+                    break;
+                case 4:
                     System.out.println("Au revoir !");
                     break;
                 default:
                     System.out.println("Choix invalide. Veuillez réessayer.");
             }
-        } while (choix != 3);
+        } while (choix != 4);
     }
+
 }
