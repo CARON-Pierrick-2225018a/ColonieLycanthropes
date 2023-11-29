@@ -1,6 +1,12 @@
 package main.models;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Lycanthrope {
+    private static List<Lycanthrope> lycanthropes = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
     private String nom;
     private String sexe;
     private String categorieAge;
@@ -104,7 +110,6 @@ public class Lycanthrope {
     @Override
     public String toString() {
         return "==========Lycanthrope===========\n" +
-                "Lycanthrope" +
                 "\n\t nom='" + nom + '\'' +
                 "\n\t sexe='" + sexe + '\'' +
                 "\n\t categorieAge='" + categorieAge + '\'' +
