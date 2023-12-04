@@ -1,7 +1,8 @@
 package main.controllers;
 
-import main.commun.Check;
+import main.common.Check;
 import main.models.Lycanthrope;
+import main.views.LycanthropeView;
 import main.views.MenuView;
 
 public class MenuViewController {
@@ -32,4 +33,40 @@ public class MenuViewController {
         } while (choix != 0);
     }
 
+    // Méthode pour afficher un menu d'actions pour un loup-garou choisi
+    public static void afficherMenuActions(Lycanthrope lycanthrope) {
+        int choix;
+        do {
+            MenuView.afficherMenuAction(lycanthrope);
+            choix = Check.checkIfEntreeIsInt();
+            switch (choix) {
+                case 1:
+                    lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
+                    break;
+                case 2:
+                    lycanthrope.entendreHurlement(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    break;
+                case 3:
+                    LycanthropeView.afficherDonner(lycanthrope); // Appeler une autre méthode d'action spécifique du loup-garou
+                    break;
+                case 4:
+                    lycanthrope.seSeparerDeMeute();
+                    break;
+                case 5:
+                    lycanthrope.seTransformerEnHumain();
+                    break;
+                case 6:
+                    lycanthrope.seTransformerEnLoup();
+                    break;
+                case 7:
+                    System.out.println("Retour au menu principal.");
+                    break;
+                case 8:
+                    lycanthrope.choisirLoupGarou();
+                    break;
+                default:
+                    System.out.println("Choix invalide. Veuillez réessayer.");
+            }
+        } while (choix != 8);
+    }
 }

@@ -1,5 +1,9 @@
 package main.models;
 
+import main.common.Check;
+import main.controllers.MenuViewController;
+import main.views.MenuView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -165,7 +169,7 @@ public class Lycanthrope {
                 System.out.println("Il n'y a qu'un loup-garou disponible. Choix automatique.");
             } else {
                 System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
-                choixLoupGarou = scanner.nextInt();
+                choixLoupGarou = Check.checkIfEntreeIsInt();
             }
 
             if (choixLoupGarou >= 1 && choixLoupGarou <= lycanthropes.size()) {
@@ -173,7 +177,7 @@ public class Lycanthrope {
                 Lycanthrope lycanthropeChoisi = lycanthropes.get(choixLoupGarou - 1);
                 // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
                 System.out.println("Le loup-garou chosit est : " + lycanthropeChoisi.getNom());
-                afficherMenuActions(lycanthropeChoisi);
+                MenuViewController.afficherMenuActions(lycanthropeChoisi);
             } else {
                 System.out.println("Numéro invalide. Veuillez réessayer.");
             }
@@ -182,56 +186,8 @@ public class Lycanthrope {
         }
     }
 
-    // Méthode pour afficher un menu d'actions pour un loup-garou choisi
-    public static void afficherMenuActions(Lycanthrope lycanthrope) {
-        int choix;
-        do {
-            System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
-            System.out.println("1. Hurler pour communiquer ");
-            System.out.println("2. Entendre un hurlement");
-            System.out.println("3. Afficher les données du loup ");
-            System.out.println("4. Séparer de la meute ");
-            System.out.println("5. Se transformer en humain ");
-            System.out.println("6. Se transformer en loup  ");
-            System.out.println("7. Retour au menu principal");
-            System.out.println("8. Choisir un autre Loup ");
-
-            System.out.print("Faites votre choix : ");
-            choix = scanner.nextInt();
-
-            switch (choix) {
-                case 1:
-                    lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
-                    break;
-                case 2:
-                    lycanthrope.entendreHurlement(); // Appeler une autre méthode d'action spécifique du loup-garou
-                    break;
-                case 3:
-                    lycanthrope.afficherDonner(lycanthrope); // Appeler une autre méthode d'action spécifique du loup-garou
-                    break;
-                case 4:
-                    lycanthrope.seSeparerDeMeute();
-                    break;
-                case 5:
-                    lycanthrope.seTransformerEnHumain();
-                    break;
-                case 6:
-                    lycanthrope.seTransformerEnLoup();
-                    break;
-                case 7:
-                    System.out.println("Retour au menu principal.");
-                    break;
-                case 8:
-                    lycanthrope.choisirLoupGarou();
-                    break;
-                default:
-                    System.out.println("Choix invalide. Veuillez réessayer.");
-            }
-        } while (choix != 8);
-    }
-
     // Méthode d'action spécifique du loup-garou (exemple)
-    private void hurlerPourCommuniquer() {
+    public void hurlerPourCommuniquer() {
         System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres lycanthropes.");
         this.aHurler = true;
     }
@@ -264,14 +220,6 @@ public class Lycanthrope {
         }
     }
 
-    // Méthode d'action spécifique du loup-garou (exemple)
-    private void afficherDonner(Lycanthrope lycanthropeChoisi) {
-        if (lycanthropeChoisi != null) {
-            System.out.println(lycanthropeChoisi.toString());
-        } else {
-            System.out.println("Aucun loup-garou choisi.");
-        }
-    }
     public void seSeparerDeMeute() {
         if (this.meute != null) {
             System.out.println("Le loup-garou " + this.nom + " se sépare de sa meute.");

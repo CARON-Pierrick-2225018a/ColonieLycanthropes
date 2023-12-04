@@ -1,4 +1,4 @@
-package main.commun;
+package main.common;
 
 import main.views.MenuView;
 
