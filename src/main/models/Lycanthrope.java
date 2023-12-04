@@ -1,7 +1,5 @@
 package main.models;
 
-import main.controllers.LycanthropeController;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

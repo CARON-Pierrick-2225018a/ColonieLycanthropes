@@ -1,10 +1,10 @@
 package main;
 
-import main.controllers.LycanthropeController;
+import main.controllers.MenuViewController;
 
 public class Main {
     public static void main(String[] args) {
         // Appel de la méthode principale du contrôleur
-        LycanthropeController.afficherMenu();
+        MenuViewController.afficherMenu();
     }
 }

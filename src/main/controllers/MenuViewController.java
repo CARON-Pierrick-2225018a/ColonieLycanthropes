@@ -4,8 +4,7 @@ import main.commun.Check;
 import main.models.Lycanthrope;
 import main.views.MenuView;
 
-public class LycanthropeController {
-
+public class MenuViewController {
     public static void afficherMenu() {
         int choix;
         do {
