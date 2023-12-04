@@ -1,29 +1,16 @@
 package main.controllers;
 
+import main.commun.Check;
 import main.models.Lycanthrope;
-
-import java.util.Scanner;
+import main.views.MenuView;
 
 public class LycanthropeController {
-    private static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
-        afficherMenu();
-    }
-
-    private static void afficherMenu() {
+    public static void afficherMenu() {
         int choix;
         do {
-            System.out.println("\nMenu Lycanthrope");
-            System.out.println("1. Afficher les informations du lycanthrope");
-            System.out.println("2. Ajouter un nouveau loup-garou");
-            System.out.println("3. Choisir un loup-garou");
-            System.out.println("4. Afficher le menu d'action");
-            System.out.println("0. Quitter");
-
-            System.out.print("Faites votre choix : ");
-            choix = scanner.nextInt();
-
+            MenuView.menuView();
+            choix = Check.checkIfEntreeIsInt();
             switch (choix) {
                 case 1:
                     Lycanthrope.afficherInformationsLycanthropes();
