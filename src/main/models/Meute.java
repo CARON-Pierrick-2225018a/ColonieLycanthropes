@@ -55,6 +55,11 @@ public class Meute {
         return forceDeMeute;
     }
 
+    public List<Lycanthrope> getTousLesLycanthropesDeLaMeute() {
+        List<Lycanthrope> listDeTousLesLycanthropesDeLaMeute = new ArrayList<>(List.of(coupleAlpha.get(0), coupleAlpha.get(1)));
+        listDeTousLesLycanthropesDeLaMeute.addAll(lycanthropesDeLaMeute);
+        return listDeTousLesLycanthropesDeLaMeute;
+    }
     public static List<Meute> getInstancesMeutes() {
         return instancesMeutes;
     }
@@ -75,6 +80,14 @@ public class Meute {
         lycanthrope.setMeute(this);
         this.forceDeMeute = calculTotalForceMeute();
     }
+
+    //TODO :   d'afficher les caractéristiques des lycanthropes qu'elle contient
+    // de créer une nouvelle hiérarchie de meute avec un ensemble de lycanthropes
+    // de constituer un couple α en fonction d’un mâle α (et de déchoir l’éventuel ancien couple)
+    // de lancer une reproduction de lycanthropes
+    // de décroitre les rangs de domination des lycanthropes de la meute naturellement
+    // de déclarer les lycanthropes ω
+    // d’ajouter et d’enlever des lycanthropes
 
     @Override
     public String toString() {
