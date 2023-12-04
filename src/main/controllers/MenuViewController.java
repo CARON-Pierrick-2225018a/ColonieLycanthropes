@@ -2,6 +2,7 @@ package main.controllers;
 
 import main.common.Check;
 import main.models.Lycanthrope;
+import main.models.Meute;
 import main.views.LycanthropeView;
 import main.views.MenuView;
 
@@ -33,6 +34,11 @@ public class MenuViewController {
                     break;
                 case 5:
                     //Lycanthrope.afficherMenuActions(lycanthrope);
+                    break;
+                case 6:
+                    for (Meute meute : Meute.getInstancesMeutes()){
+                        System.out.println(meute);
+                    }
                     break;
                 case 0:
                     System.out.println("Au revoir !");

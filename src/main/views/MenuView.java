@@ -14,6 +14,7 @@ public class MenuView {
         System.out.println("3. Ajouter un nouveau loup-garou");
         System.out.println("4. Choisir un loup-garou");
         System.out.println("5. Afficher le menu d'action");
+        System.out.println("6. Afficher la liste des meutes");
         System.out.println("0. Quitter");
 
         System.out.print("Faites votre choix : ");

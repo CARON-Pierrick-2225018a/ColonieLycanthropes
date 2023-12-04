@@ -2,6 +2,7 @@ package main.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Lycanthrope {
@@ -12,26 +13,28 @@ public class Lycanthrope {
     private String categorieAge;
     private int force;
     private int facteurDomination;
-    private int rangDomination;
+    private Character rangDomination;
     private int niveau;
     private int facteurImpetuosite;
-    private String meute;
+    private Meute meute;
     private boolean estEnTrainDeDormir;
     private boolean estMalade;
     private boolean aHurler;
     private String statut;
+    public static final List<Character> typesRangDomination = new ArrayList<>(List.of(
+            'α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','σ','τ','υ','φ','χ','ψ','ω'
+    ));
 
     // Constructeur
-    public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite, String meute) {
+    public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite) {
         this.nom = nom;
         this.sexe = sexe;
         this.categorieAge = categorieAge;
         this.force = force;
         this.facteurDomination = facteurDomination;
-        this.rangDomination = rangDomination;
+        this.rangDomination = typesRangDomination.get(rangDomination);
         this.niveau = calculerNiveau(); // Calcul du niveau en fonction des caractéristiques
         this.facteurImpetuosite = facteurImpetuosite;
-        this.meute = meute;
         this.estMalade = false;//Pas malade par default
         this.estEnTrainDeDormir = false;//Ne dors pas par default
         this.aHurler = false; // Par défault aucun loup n'a hurlé
@@ -80,12 +83,16 @@ public class Lycanthrope {
         this.facteurDomination = facteurDomination;
     }
 
-    public int getRangDomination() {
+    public Character getRangDomination() {
         return rangDomination;
     }
 
-    public void setRangDomination(int rangDomination) {
+    public void setRangDomination(Character rangDomination) {
         this.rangDomination = rangDomination;
+    }
+
+    public void setRangDomination(int rangDomination) {
+        this.rangDomination = typesRangDomination.get(rangDomination);
     }
 
     public int getNiveau() {
@@ -104,11 +111,18 @@ public class Lycanthrope {
         this.facteurImpetuosite = facteurImpetuosite;
     }
 
-    public String getMeute() {
+    public Meute getMeute() {
         return meute;
     }
+    public String getMeuteToString() {
+        if (!Objects.equals(meute, null)) {
+            return "Meute n°"+Meute.getInstancesMeutes().indexOf(meute)+1+ " : " + meute.getNom();
+        } else {
+            return "Pas de meute";
+        }
+    }
 
-    public void setMeute(String meute) {
+    public void setMeute(Meute meute) {
         this.meute = meute;
     }
 
@@ -118,8 +132,9 @@ public class Lycanthrope {
 
     // Méthode pour calculer le niveau en fonction des caractéristiques
     private int calculerNiveau() {
+        List<Character> listRangDominationInverse = typesRangDomination.reversed();
         // Exemple de calcul simple
-        return force * rangDomination;
+        return force * facteurDomination + listRangDominationInverse.indexOf(rangDomination);
     }
     public boolean aHurle() {
         return aHurler;
@@ -144,7 +159,7 @@ public class Lycanthrope {
 
         // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du lycanthrope
 
-        new Lycanthrope(nom, sexe, "Adulte", 0, 0, 0, 0, "Solitaire");
+        new Lycanthrope(nom, sexe, "Adulte", 0, 0, 0, 0);
 
         System.out.println("lycanthrope ajouté avec succès !");
     }
@@ -225,18 +240,18 @@ public class Lycanthrope {
 
     @Override
     public String toString() {
-        return "==========Lycanthrope===========\n" +
-                "\n\t nom='" + nom + '\'' +
-                "\n\t sexe='" + sexe + '\'' +
-                "\n\t categorieAge='" + categorieAge + '\'' +
-                "\n\t force=" + force +
-                "\n\t facteurDomination=" + facteurDomination +
-                "\n\t rangDomination=" + rangDomination +
-                "\n\t niveau=" + niveau +
-                "\n\t facteurImpetuosite=" + facteurImpetuosite +
-                "\n\t meute='" + meute + '\'' +
-                "\n\t Statut='" + statut + '\'' +
-                "\n================================";
+        return "==========Lycanthrope===========" +
+                "\n\tNom : " + nom +
+                "\n\tSexe : " + sexe +
+                "\n\tCategories d'âge : " + categorieAge +
+                "\n\tForce : " + force +
+                "\n\tFacteurDomination : " + facteurDomination +
+                "\n\tRangDomination : " + rangDomination +
+                "\n\tNiveau : " + niveau +
+                "\n\tFacteur d'impétuosité : " + facteurImpetuosite +
+                "\n\t" + getMeuteToString() +
+                "\n\tStatut : " + statut +
+                "\n=============================";
     }
 
 }
