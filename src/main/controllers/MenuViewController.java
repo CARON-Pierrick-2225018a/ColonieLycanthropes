@@ -13,13 +13,13 @@ public class MenuViewController {
             choix = Check.checkIfEntreeIsInt();
             switch (choix) {
                 case 1:
-                    Lycanthrope.afficherInformationsLycanthropes();
+                    LycanthropeView.afficherInformationsLycanthropes();
                     break;
                 case 2:
                     Lycanthrope.ajouterLoupGarou();
                     break;
                 case 3:
-                    Lycanthrope.choisirLoupGarou();
+                    LycanthropeView.choisirLoupGarou();
                     break;
                 case 4:
                     //Lycanthrope.afficherMenuActions(lycanthrope);
@@ -34,7 +34,7 @@ public class MenuViewController {
     }
 
     // Méthode pour afficher un menu d'actions pour un loup-garou choisi
-    public static void afficherMenuActions(Lycanthrope lycanthrope) {
+    public static void afficherMenuDUnLycanthrope(Lycanthrope lycanthrope) {
         int choix;
         do {
             MenuView.afficherMenuAction(lycanthrope);
@@ -62,7 +62,7 @@ public class MenuViewController {
                     System.out.println("Retour au menu principal.");
                     break;
                 case 8:
-                    lycanthrope.choisirLoupGarou();
+                    LycanthropeView.choisirLoupGarou();
                     break;
                 default:
                     System.out.println("Choix invalide. Veuillez réessayer.");

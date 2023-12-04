@@ -1,15 +1,11 @@
 package main.models;
 
-import main.common.Check;
-import main.controllers.MenuViewController;
-import main.views.MenuView;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class Lycanthrope {
-    private static List<Lycanthrope> lycanthropes = new ArrayList<>();
+    private static List<Lycanthrope> instancesLycanthropes = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
     private String nom;
     private String sexe;
@@ -38,10 +34,10 @@ public class Lycanthrope {
         this.meute = meute;
         this.estMalade = false;//Pas malade par default
         this.estEnTrainDeDormir = false;//Ne dors pas par default
-        this.aHurler = false; // Par défault aucun loup n'a hurler
-        this.statut = "humain"; //Par défault il est humain
+        this.aHurler = false; // Par défault aucun loup n'a hurlé
+        this.statut = "humain"; //Par défault, il est humain
         // Ajouter le nouveau loup-garou à la liste
-        lycanthropes.add(this);
+        instancesLycanthropes.add(this);
     }
 
     public String getNom() {
@@ -115,6 +111,11 @@ public class Lycanthrope {
     public void setMeute(String meute) {
         this.meute = meute;
     }
+
+    public static List<Lycanthrope> getInstancesLycanthropes() {
+        return instancesLycanthropes;
+    }
+
     // Méthode pour calculer le niveau en fonction des caractéristiques
     private int calculerNiveau() {
         // Exemple de calcul simple
@@ -123,18 +124,8 @@ public class Lycanthrope {
     public boolean aHurle() {
         return aHurler;
     }
-    // Méthode statique pour afficher les informations de tous les lycanthropes
-    public static void afficherInformationsLycanthropes() {
-        if (lycanthropes.isEmpty()) {
-            System.out.println("Aucun loup-garou à afficher.");
-        } else {
-            System.out.println("Liste des loup-garous :");
-            for (int i = 0; i < lycanthropes.size(); i++) {
-                Lycanthrope lycanthrope = lycanthropes.get(i);
-                System.out.println(i + 1 + ". " + lycanthrope.getNom() + " (" + lycanthrope.getSexe() + ")");
-            }
-        }
-    }
+    // Méthode statique pour afficher les informations de tous les instancesLycanthropes
+
 
     // Méthode statique pour ajouter un nouveau loup-garou
     public static void ajouterLoupGarou() {
@@ -157,38 +148,11 @@ public class Lycanthrope {
 
         System.out.println("Loup-garou ajouté avec succès !");
     }
-    public static void choisirLoupGarou() {
-        Lycanthrope.afficherInformationsLycanthropes();
 
-        if (!lycanthropes.isEmpty()) {
-            int choixLoupGarou;
-
-            if (lycanthropes.size() == 1) {
-                // S'il n'y a qu'un loup-garou, le choisissez automatiquement
-                choixLoupGarou = 1;
-                System.out.println("Il n'y a qu'un loup-garou disponible. Choix automatique.");
-            } else {
-                System.out.print("Choisissez le numéro du loup-garou que vous souhaitez : ");
-                choixLoupGarou = Check.checkIfEntreeIsInt();
-            }
-
-            if (choixLoupGarou >= 1 && choixLoupGarou <= lycanthropes.size()) {
-                // L'utilisateur a choisi un loup-garou valide
-                Lycanthrope lycanthropeChoisi = lycanthropes.get(choixLoupGarou - 1);
-                // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
-                System.out.println("Le loup-garou chosit est : " + lycanthropeChoisi.getNom());
-                MenuViewController.afficherMenuActions(lycanthropeChoisi);
-            } else {
-                System.out.println("Numéro invalide. Veuillez réessayer.");
-            }
-        } else {
-            System.out.println("Aucun loup-garou disponible.");
-        }
-    }
 
     // Méthode d'action spécifique du loup-garou (exemple)
     public void hurlerPourCommuniquer() {
-        System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres lycanthropes.");
+        System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres instancesLycanthropes.");
         this.aHurler = true;
     }
 
@@ -196,7 +160,7 @@ public class Lycanthrope {
     public void entendreHurlement() {
         // Vérifier si au moins un loup a hurlé
         boolean auMoinsUnHurlement = false;
-        for (Lycanthrope loup : lycanthropes) {
+        for (Lycanthrope loup : instancesLycanthropes) {
             if (loup != this && loup.aHurle()) {
                 auMoinsUnHurlement = true;
                 break;
@@ -207,7 +171,7 @@ public class Lycanthrope {
             System.out.println("Le loup-garou " + this.nom + " entend un hurlement.");
 
             // Exclure le loup-garou actuel de la liste des loup-garous à entendre
-            List<Lycanthrope> loupGarousAEntendre = new ArrayList<>(lycanthropes);
+            List<Lycanthrope> loupGarousAEntendre = new ArrayList<>(instancesLycanthropes);
             loupGarousAEntendre.remove(this);
 
             // Simuler la réponse au hurlement pour chaque loup-garou à entendre
