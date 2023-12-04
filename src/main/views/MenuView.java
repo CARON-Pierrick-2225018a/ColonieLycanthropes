@@ -1,6 +1,10 @@
 package main.views;
 
+import main.initialize.InitializeData;
 import main.models.Lycanthrope;
+
+import java.util.Objects;
+import java.util.Scanner;
 
 public class MenuView {
     public static void menuView() {
@@ -27,5 +31,12 @@ public class MenuView {
         System.out.println("0. Retour au menu principal");
 
         System.out.print("Faites votre choix : ");
+    }
+
+    public static void affichierChoixInitAuto() {
+        System.out.print("Voulez-vous initialiser le jeu automatiquement (o/n): ");
+        if (!Objects.equals(new Scanner(System.in).nextLine(), "n")) {
+            InitializeData.initialisationDesLycanthropes();
+        }
     }
 }

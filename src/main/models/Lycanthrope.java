@@ -36,7 +36,7 @@ public class Lycanthrope {
         this.estEnTrainDeDormir = false;//Ne dors pas par default
         this.aHurler = false; // Par défault aucun loup n'a hurlé
         this.statut = "humain"; //Par défault, il est humain
-        // Ajouter le nouveau loup-garou à la liste
+        // Ajouter le nouveau lycanthrope à la liste
         instancesLycanthropes.add(this);
     }
 
@@ -127,36 +127,36 @@ public class Lycanthrope {
     // Méthode statique pour afficher les informations de tous les instancesLycanthropes
 
 
-    // Méthode statique pour ajouter un nouveau loup-garou
+    // Méthode statique pour ajouter un nouveau lycanthrope
     public static void ajouterLoupGarou() {
-        System.out.print("Entrez le prénom du loup-garou : ");
+        System.out.print("Entrez le prénom du lycanthrope : ");
         String nom = scanner.next();
 
-        System.out.print("Entrez le sexe du loup-garou (M/F) : ");
+        System.out.print("Entrez le sexe du lycanthrope (M/F) : ");
         String sexe = scanner.next();
 
         // Validation de la saisie pour s'assurer que le sexe est M, m, F ou f
         while (!sexe.matches("[MmFf]")) {
             System.out.println("Saisie invalide. Veuillez entrer M, m, F ou f.");
-            System.out.print("Entrez le sexe du loup-garou (M/F) : ");
+            System.out.print("Entrez le sexe du lycanthrope (M/F) : ");
             sexe = scanner.next();
         }
 
-        // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du loup-garou
+        // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du lycanthrope
 
         new Lycanthrope(nom, sexe, "Adulte", 0, 0, 0, 0, "Solitaire");
 
-        System.out.println("Loup-garou ajouté avec succès !");
+        System.out.println("lycanthrope ajouté avec succès !");
     }
 
 
-    // Méthode d'action spécifique du loup-garou (exemple)
+    // Méthode d'action spécifique du lycanthrope (exemple)
     public void hurlerPourCommuniquer() {
-        System.out.println("Le loup-garou " + this.nom + " émet un hurlement pour communiquer avec d'autres instancesLycanthropes.");
+        System.out.println("Le lycanthrope " + this.nom + " émet un hurlement pour communiquer avec d'autres instancesLycanthropes.");
         this.aHurler = true;
     }
 
-    // Méthode d'action spécifique du loup-garou (exemple)
+    // Méthode d'action spécifique du lycanthrope (exemple)
     public void entendreHurlement() {
         // Vérifier si au moins un loup a hurlé
         boolean auMoinsUnHurlement = false;
@@ -168,56 +168,56 @@ public class Lycanthrope {
         }
 
         if (!estEnTrainDeDormir && !estMalade && auMoinsUnHurlement) {
-            System.out.println("Le loup-garou " + this.nom + " entend un hurlement.");
+            System.out.println("Le lycanthrope " + this.nom + " entend un hurlement.");
 
-            // Exclure le loup-garou actuel de la liste des loup-garous à entendre
+            // Exclure le lycanthrope actuel de la liste des lycanthropes à entendre
             List<Lycanthrope> loupGarousAEntendre = new ArrayList<>(instancesLycanthropes);
             loupGarousAEntendre.remove(this);
 
-            // Simuler la réponse au hurlement pour chaque loup-garou à entendre
+            // Simuler la réponse au hurlement pour chaque lycanthrope à entendre
             for (Lycanthrope loupAGarder : loupGarousAEntendre) {
-                System.out.println("Le loup-garou " + this.nom + " répond au hurlement de " + loupAGarder.getNom());
+                System.out.println("Le lycanthrope " + this.nom + " répond au hurlement de " + loupAGarder.getNom());
                 this.aHurler=true;
             }
         } else {
-            System.out.println("Le loup-garou " + this.nom + " ne peut pas entendre le hurlement car il dort, est malade ou aucun loup n'a hurlé.");
+            System.out.println("Le lycanthrope " + this.nom + " ne peut pas entendre le hurlement car il dort, est malade ou aucun loup n'a hurlé.");
         }
     }
 
     public void seSeparerDeMeute() {
         if (this.meute != null) {
-            System.out.println("Le loup-garou " + this.nom + " se sépare de sa meute.");
+            System.out.println("Le lycanthrope " + this.nom + " se sépare de sa meute.");
             this.meute = null;
         } else {
-            System.out.println("Le loup-garou " + this.nom + " n'appartient actuellement à aucune meute.");
+            System.out.println("Le lycanthrope " + this.nom + " n'appartient actuellement à aucune meute.");
         }
     }
     public void seTransformerEnHumain() {
         if (!estHumain()) {
-            System.out.println("Le loup-garou " + this.nom + " se transforme en humain.");
+            System.out.println("Le lycanthrope " + this.nom + " se transforme en humain.");
             this.statut = "humain"; // Mettez à jour le statut en humain
             // Ajoutez ici le code pour gérer la transformation en humain
         } else {
-            System.out.println("Le loup-garou " + this.nom + " est déjà un humain.");
+            System.out.println("Le lycanthrope " + this.nom + " est déjà un humain.");
         }
     }
 
     public void seTransformerEnLoup() {
         if (!estLoup()) {
-            System.out.println("Le loup-garou " + this.nom + " se transforme en loup.");
+            System.out.println("Le lycanthrope " + this.nom + " se transforme en loup.");
             this.statut = "loup"; // Mettez à jour le statut en loup
             // Ajoutez ici le code pour gérer la transformation en loup
         } else {
-            System.out.println("Le loup-garou " + this.nom + " est déjà un loup.");
+            System.out.println("Le lycanthrope " + this.nom + " est déjà un loup.");
         }
     }
 
-    // Méthode auxiliaire pour vérifier si le loup-garou est déjà un humain
+    // Méthode auxiliaire pour vérifier si le lycanthrope est déjà un humain
     private boolean estHumain() {
         return this.statut.equals("humain");
     }
 
-    // Méthode auxiliaire pour vérifier si le loup-garou est déjà un loup
+    // Méthode auxiliaire pour vérifier si le lycanthrope est déjà un loup
     private boolean estLoup() {
         return this.statut.equals("loup");
     }
