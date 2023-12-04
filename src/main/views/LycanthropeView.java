@@ -17,7 +17,6 @@ public class LycanthropeView {
     }
 
     public static void afficherInformationsLycanthropes() {
-        System.out.println(Lycanthrope.getInstancesLycanthropes());
         if (Lycanthrope.getInstancesLycanthropes().isEmpty()) {
             System.out.println("Aucun loup-garou à afficher.");
         } else {
