@@ -236,7 +236,7 @@ public class Lycanthrope {
                 "\n\t facteurImpetuosite=" + facteurImpetuosite +
                 "\n\t meute='" + meute + '\'' +
                 "\n\t Statut='" + statut + '\'' +
-                "\n\t ================================";
+                "\n================================";
     }
 
 }

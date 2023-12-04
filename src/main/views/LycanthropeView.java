@@ -16,7 +16,7 @@ public class LycanthropeView {
         }
     }
 
-    public static void afficherInformationsLycanthropes() {
+    public static void afficherListeLycanthropes() {
         if (Lycanthrope.getInstancesLycanthropes().isEmpty()) {
             System.out.println("Aucun loup-garou à afficher.");
         } else {
@@ -29,11 +29,11 @@ public class LycanthropeView {
         }
     }
 
-    public static void choisirLoupGarou() {
-        LycanthropeView.afficherInformationsLycanthropes();
+    public static Lycanthrope choisirLoupGarou() {
         List<Lycanthrope> instancesLycanthropes = Lycanthrope.getInstancesLycanthropes();
-
         if (!instancesLycanthropes.isEmpty()) {
+            LycanthropeView.afficherListeLycanthropes();
+
             int choixLoupGarou;
 
             if (instancesLycanthropes.size() == 1) {
@@ -50,12 +50,13 @@ public class LycanthropeView {
                 Lycanthrope lycanthropeChoisi = instancesLycanthropes.get(choixLoupGarou - 1);
                 // Ajoutez ici le code pour effectuer d'autres actions avec le loup-garou choisi
                 System.out.println("Le loup-garou choisit est : " + lycanthropeChoisi.getNom());
-                MenuViewController.afficherMenuDUnLycanthrope(lycanthropeChoisi);
+                return lycanthropeChoisi;
             } else {
                 System.out.println("Numéro invalide. Veuillez réessayer.");
             }
         } else {
             System.out.println("Aucun loup-garou disponible.");
         }
+        return null;
     }
 }

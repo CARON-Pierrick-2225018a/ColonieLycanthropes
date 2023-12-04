@@ -11,17 +11,27 @@ public class MenuViewController {
         do {
             MenuView.menuView();
             choix = Check.checkIfEntreeIsInt();
+            Lycanthrope lycanthropeChoisi;
             switch (choix) {
                 case 1:
-                    LycanthropeView.afficherInformationsLycanthropes();
+                    LycanthropeView.afficherListeLycanthropes();
                     break;
                 case 2:
-                    Lycanthrope.ajouterLoupGarou();
+                    lycanthropeChoisi = LycanthropeView.choisirLoupGarou();
+                    LycanthropeView.afficherDonner(lycanthropeChoisi);
                     break;
                 case 3:
-                    LycanthropeView.choisirLoupGarou();
+                    Lycanthrope.ajouterLoupGarou();
                     break;
                 case 4:
+                    lycanthropeChoisi = LycanthropeView.choisirLoupGarou();
+                    if (lycanthropeChoisi!=null){
+                        MenuViewController.afficherMenuDUnLycanthrope(lycanthropeChoisi);
+                    } else {
+                        System.out.println("Il n'y a pas de lycanthropes");
+                    }
+                    break;
+                case 5:
                     //Lycanthrope.afficherMenuActions(lycanthrope);
                     break;
                 case 0:
