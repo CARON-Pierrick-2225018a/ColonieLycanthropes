@@ -40,6 +40,9 @@ public class MenuViewController {
             MenuView.afficherMenuAction(lycanthrope);
             choix = Check.checkIfEntreeIsInt();
             switch (choix) {
+                case 0:
+                    System.out.println("Retour au menu principal.");
+                    break;
                 case 1:
                     lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
                     break;
@@ -59,14 +62,11 @@ public class MenuViewController {
                     lycanthrope.seTransformerEnLoup();
                     break;
                 case 7:
-                    System.out.println("Retour au menu principal.");
-                    break;
-                case 8:
                     LycanthropeView.choisirLoupGarou();
                     break;
                 default:
                     System.out.println("Choix invalide. Veuillez réessayer.");
             }
-        } while (choix != 8);
+        } while (choix != 0);
     }
 }

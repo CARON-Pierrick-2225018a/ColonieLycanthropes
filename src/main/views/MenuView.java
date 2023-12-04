@@ -22,8 +22,8 @@ public class MenuView {
         System.out.println("4. Séparer de la meute ");
         System.out.println("5. Se transformer en humain ");
         System.out.println("6. Se transformer en loup  ");
-        System.out.println("7. Retour au menu principal");
-        System.out.println("8. Choisir un autre Loup ");
+        System.out.println("7. Choisir un autre Loup ");
+        System.out.println("0. Retour au menu principal");
 
         System.out.print("Faites votre choix : ");
     }
