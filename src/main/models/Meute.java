@@ -1,10 +1,13 @@
 package main.models;
 
+import main.common.Check;
+import main.views.LycanthropeView;
 import main.views.MeuteView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Meute {
     private String nom;
@@ -57,7 +60,9 @@ public class Meute {
 
     public List<Lycanthrope> getTousLesLycanthropesDeLaMeute() {
         List<Lycanthrope> listDeTousLesLycanthropesDeLaMeute = new ArrayList<>(List.of(coupleAlpha.get(0), coupleAlpha.get(1)));
-        listDeTousLesLycanthropesDeLaMeute.addAll(lycanthropesDeLaMeute);
+        if (!Objects.equals(lycanthropesDeLaMeute, null)){
+            listDeTousLesLycanthropesDeLaMeute.addAll(lycanthropesDeLaMeute);
+        }
         return listDeTousLesLycanthropesDeLaMeute;
     }
     public static List<Meute> getInstancesMeutes() {
@@ -75,19 +80,37 @@ public class Meute {
         return resultat;
     }
 
+
     public void ajouterUnLycanthropeALaMeute(Lycanthrope lycanthrope) {
-        lycanthropesDeLaMeute.add(lycanthrope);
-        lycanthrope.setMeute(this);
-        this.forceDeMeute = calculTotalForceMeute();
+        if (Objects.equals(lycanthrope.getMeute(), null)){
+            lycanthropesDeLaMeute.add(lycanthrope);
+            lycanthrope.setMeute(this);
+            this.forceDeMeute = calculTotalForceMeute();
+            System.out.println(lycanthrope.getNom()+" ajouté a la meute n°"+Meute.getInstancesMeutes().indexOf(this)+" "+nom);
+        } else {
+            System.out.println("Ce lycanthrope est déjà dans une meute");
+        }
     }
 
-    //TODO :   d'afficher les caractéristiques des lycanthropes qu'elle contient
-    // de créer une nouvelle hiérarchie de meute avec un ensemble de lycanthropes
+    public void afficherCaracteristiqueMembreDeLaMeute() {
+        LycanthropeView.afficherListeLycanthropes(getTousLesLycanthropesDeLaMeute());
+    }
+
+    // Méthode statique pour ajouter un nouveau lycanthrope
+    public static void ajouterMeute() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Entrez le nom de la meute : ");
+        String nom = scanner.next();
+
+        System.out.println("Entrez le couple alpha : ");
+        new Meute(nom, new ArrayList<>(List.of(LycanthropeView.choisirLoupGarouSelonSonSex("M"),LycanthropeView.choisirLoupGarouSelonSonSex("F"))), null);
+        System.out.println("meute ajouté avec succès !");
+    }
+
+    //TODO : de créer une nouvelle hiérarchie de meute avec un ensemble de lycanthropes
     // de constituer un couple α en fonction d’un mâle α (et de déchoir l’éventuel ancien couple)
     // de lancer une reproduction de lycanthropes
     // de décroitre les rangs de domination des lycanthropes de la meute naturellement
-    // de déclarer les lycanthropes ω
-    // d’ajouter et d’enlever des lycanthropes
 
     @Override
     public String toString() {
