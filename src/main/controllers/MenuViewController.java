@@ -3,6 +3,7 @@ package main.controllers;
 import main.common.Check;
 import main.models.Lycanthrope;
 import main.models.Meute;
+import main.models.Temps;
 import main.views.LycanthropeView;
 import main.views.MenuView;
 import main.views.MeuteView;
@@ -31,6 +32,7 @@ public class MenuViewController {
                 // Ajouter un lycanthrope
                 case 3:
                     Lycanthrope.ajouterLoupGarou();
+                    Temps.passerUnJour();
                     break;
                 // Choisir un lycanthrope
                 case 4:
@@ -53,6 +55,7 @@ public class MenuViewController {
                 // Ajouter une nouvelle meute
                 case 7:
                     Meute.ajouterMeute();
+                    Temps.passerDuTemps(2);
                     break;
                 // Choisir une meute
                 case 8:
@@ -82,21 +85,26 @@ public class MenuViewController {
                     break;
                 case 1:
                     lycanthrope.hurlerPourCommuniquer(); // Appeler la méthode d'action spécifique du loup-garou
+                    Temps.passerUnJour();
                     break;
                 case 2:
                     lycanthrope.entendreHurlement(); // Appeler une autre méthode d'action spécifique du loup-garou
+                    Temps.passerUnJour();
                     break;
                 case 3:
-                    System.out.println(lycanthrope); // Appeler une autre méthode d'action spécifique du loup-garou
+                    System.out.println(lycanthrope);
                     break;
                 case 4:
                     lycanthrope.seSeparerDeMeute();
+                    Temps.passerUnJour();
                     break;
                 case 5:
                     lycanthrope.seTransformerEnHumain();
+                    Temps.passerUnJour();
                     break;
                 case 6:
                     lycanthrope.seTransformerEnLoup();
+                    Temps.passerUnJour();
                     break;
                 case 7:
                     Lycanthrope lycanthropeChoisi = LycanthropeView.choisirLoupGarou();
@@ -128,10 +136,12 @@ public class MenuViewController {
                 // Ajouter un lycanthrope à la meute
                 case 2:
                     meute.ajouterUnLycanthropeALaMeute(Objects.requireNonNull(LycanthropeView.choisirLoupGarouSansMeute()));
+                    Temps.passerUnJour();
                     break;
                 // Enlever un lycanthrope à la meute
                 case 3:
                     meute.enleverUnLycanthropeALaMeute(Objects.requireNonNull(LycanthropeView.choisirLoupGarouDeLaListe(meute.getTousLesLycanthropesDeLaMeute())));
+                    Temps.passerUnJour();
                     break;
                 // Mettre un lycanthrope au rang ω
                 case 4:

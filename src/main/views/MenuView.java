@@ -3,6 +3,7 @@ package main.views;
 import main.initialize.InitializeData;
 import main.models.Lycanthrope;
 import main.models.Meute;
+import main.models.Temps;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class MenuView {
     public static void menuView() {
         System.out.println("\nMenu Lycanthrope");
+        Temps.getDate();
         System.out.println("1. Afficher la liste des lycanthropes");
         System.out.println("2. Afficher les informations d'un lycanthrope");
         System.out.println("3. Ajouter un nouveau lycanthrope");
@@ -25,6 +27,7 @@ public class MenuView {
 
     public static void afficherMenuActionPourLycanthropes(Lycanthrope lycanthrope) {
         System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
+        Temps.getDate();
         System.out.println("1. Hurler pour communiquer ");
         System.out.println("2. Entendre un hurlement");
         System.out.println("3. Afficher les informations du lycanthrope ");
@@ -39,6 +42,7 @@ public class MenuView {
 
     public static void afficherMenuActionPourMeutes(Meute meute) {
         System.out.println("\nMenu d'actions pour meute " + meute.getNom());
+        Temps.getDate();
         System.out.println("1. Afficher les informations de la meute ");
         System.out.println("2. Ajouter un lycanthrope ");
         System.out.println("3. Enlever un lycanthrope ");
