@@ -9,28 +9,8 @@ public class Temps {
         return jour;
     }
 
-    public static void setJour(int jour) {
-        Temps.jour = jour;
-    }
-
-    public static int getMois() {
-        return mois;
-    }
-
-    public static void setMois(int mois) {
-        Temps.mois = mois;
-    }
-
-    public static int getAnnee() {
-        return annee;
-    }
-
-    public static void setAnnee(int annee) {
-        Temps.annee = annee;
-    }
-
     public static void passerDuTemps(int jours) {
-        for (int i = 0; i<jour; i++){
+        for (int i = 0; i<jours; i++){
             passerUnJour();
         }
     }
