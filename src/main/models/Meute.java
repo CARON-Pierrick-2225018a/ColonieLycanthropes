@@ -70,10 +70,10 @@ public class Meute {
     }
 
     private int calculTotalForceMeute() {
-        int resultat=coupleAlpha.get(0).getForce()+coupleAlpha.get(1).getForce();
+        int resultat=coupleAlpha.get(0).getNiveau()+coupleAlpha.get(1).getNiveau();
         if (!Objects.equals(lycanthropesDeLaMeute, null)){
             for (Lycanthrope lycanthrope : lycanthropesDeLaMeute) {
-                resultat+=lycanthrope.getForce();
+                resultat+=lycanthrope.getNiveau();
             }
         }
 
@@ -86,9 +86,20 @@ public class Meute {
             lycanthropesDeLaMeute.add(lycanthrope);
             lycanthrope.setMeute(this);
             this.forceDeMeute = calculTotalForceMeute();
-            System.out.println(lycanthrope.getNom()+" ajouté a la meute n°"+Meute.getInstancesMeutes().indexOf(this)+" "+nom);
+            System.out.println(lycanthrope.getNom()+" ajouté a la meute "+nom);
         } else {
             System.out.println("Ce lycanthrope est déjà dans une meute");
+        }
+    }
+
+    public void enleverUnLycanthropeALaMeute(Lycanthrope lycanthrope) {
+        if (!Objects.equals(lycanthrope.getMeute(), null)){
+            lycanthropesDeLaMeute.remove(lycanthrope);
+            lycanthrope.setMeute(null);
+            this.forceDeMeute = calculTotalForceMeute();
+            System.out.println(lycanthrope.getNom()+" ajouté a la meute "+nom);
+        } else {
+            System.out.println("Ce lycanthrope n'a pas de meute");
         }
     }
 
