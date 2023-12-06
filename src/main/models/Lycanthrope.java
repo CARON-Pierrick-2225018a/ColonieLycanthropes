@@ -24,6 +24,8 @@ public class Lycanthrope {
     public static final List<Character> typesRangDomination = new ArrayList<>(List.of(
             'α','β','γ','δ','ε','ζ','η','θ','ι','κ','λ','μ','ν','ξ','ο','π','ρ','σ','τ','υ','φ','χ','ψ','ω'
     ));
+    public List<Lycanthrope> parents = new ArrayList<>(2);
+    public List<Lycanthrope> enfants = new ArrayList<>();
 
     // Constructeur
     public Lycanthrope(String nom, String sexe, String categorieAge, int force, int facteurDomination, int rangDomination, int facteurImpetuosite) {
@@ -111,6 +113,22 @@ public class Lycanthrope {
         this.facteurImpetuosite = facteurImpetuosite;
     }
 
+    public List<Lycanthrope> getParents() {
+        return parents;
+    }
+
+    public void setParents(List<Lycanthrope> parents) {
+        this.parents = parents;
+    }
+
+    public List<Lycanthrope> getEnfants() {
+        return enfants;
+    }
+
+    public void ajoutEnfants(Lycanthrope enfants) {
+        this.enfants.add(enfants);
+    }
+
     public Meute getMeute() {
         return meute;
     }
@@ -142,8 +160,16 @@ public class Lycanthrope {
     // Méthode statique pour afficher les informations de tous les instancesLycanthropes
 
 
-    // Méthode statique pour ajouter un nouveau lycanthrope
     public static void ajouterLoupGarou() {
+        ajouterLoupGarouAvecParametre("Adulte");
+    }
+
+    public static void ajouterLoupGarouBeBe() {
+        ajouterLoupGarouAvecParametre("Bébé");
+    }
+
+    // Méthode statique pour ajouter un nouveau lycanthrope
+    public static void ajouterLoupGarouAvecParametre(String categorieAge) {
         System.out.print("Entrez le prénom du lycanthrope : ");
         String nom = scanner.next();
 
@@ -159,7 +185,7 @@ public class Lycanthrope {
 
         // Vous pouvez ajouter d'autres saisies utilisateur pour les autres caractéristiques du lycanthrope
 
-        new Lycanthrope(nom, sexe, "Adulte", 0, 0, 0, 0);
+        new Lycanthrope(nom, sexe, categorieAge, 0, 0, 0, 0);
 
         System.out.println("lycanthrope ajouté avec succès !");
     }
