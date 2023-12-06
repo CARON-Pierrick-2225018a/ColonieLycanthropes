@@ -131,7 +131,7 @@ public class MenuViewController {
                     break;
                 // Enlever un lycanthrope à la meute
                 case 3:
-
+                    meute.enleverUnLycanthropeALaMeute(Objects.requireNonNull(LycanthropeView.choisirLoupGarouDeLaListe(meute.getTousLesLycanthropesDeLaMeute())));
                     break;
                 // Mettre un lycanthrope au rang ω
                 case 4:
