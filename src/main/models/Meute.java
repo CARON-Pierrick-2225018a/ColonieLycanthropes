@@ -3,10 +3,7 @@ package main.models;
 import main.views.LycanthropeView;
 import main.views.MeuteView;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Meute {
     private String nom;
@@ -115,6 +112,19 @@ public class Meute {
         System.out.println("Entrez le couple alpha : ");
         new Meute(nom, new ArrayList<>(List.of(LycanthropeView.choisirLoupGarouSelonSonSex("M"),LycanthropeView.choisirLoupGarouSelonSonSex("F"))), null);
         System.out.println("meute ajouté avec succès !");
+    }
+
+    public void repoductionDesAlphas() {
+        // TODO: vérification de la saison
+        Random random = new Random();
+        for (int i = 0; i < random.nextInt(8); i++) {
+            Lycanthrope.ajouterLoupGarouBeBe();
+            Lycanthrope lycanthropeBebe = Lycanthrope.getInstancesLycanthropes().get(Lycanthrope.getInstancesLycanthropes().size()-1);
+            lycanthropeBebe.setParents(coupleAlpha);
+            coupleAlpha.get(0).ajoutEnfants(lycanthropeBebe);
+            coupleAlpha.get(1).ajoutEnfants(lycanthropeBebe);
+        }
+        Temps.passer9Mois();
     }
 
     //TODO : de créer une nouvelle hiérarchie de meute avec un ensemble de lycanthropes
