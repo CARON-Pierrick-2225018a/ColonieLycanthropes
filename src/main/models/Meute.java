@@ -1,6 +1,5 @@
 package main.models;
 
-import main.common.Check;
 import main.views.LycanthropeView;
 import main.views.MeuteView;
 
