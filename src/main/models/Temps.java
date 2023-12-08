@@ -20,7 +20,7 @@ public class Temps {
     }
 
     public static void getDate() {
-        System.out.println("Jour: "+jour+" Mois: "+mois+" Année: "+annee);
+        System.out.println("Jour: "+jour+" - Mois: "+mois+" - Année: "+annee);
     }
 
     public static void passerUnJour() {

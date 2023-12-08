@@ -38,7 +38,7 @@ public class MeuteView {
             }
             return afficheDesLycanthropes.toString();
         } else {
-            return "Pas de lycanthropes dans cette meute";
+            return "Pas de lycanthrope dans cette meute";
         }
     }
 

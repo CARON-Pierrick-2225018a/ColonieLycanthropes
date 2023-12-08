@@ -187,13 +187,13 @@ public class Lycanthrope {
 
         new Lycanthrope(nom, sexe, categorieAge, 0, 0, 0, 0);
 
-        System.out.println("lycanthrope ajouté avec succès !");
+        System.out.println("Lycanthrope ajouté avec succès !");
     }
 
 
     // Méthode d'action spécifique du lycanthrope (exemple)
     public void hurlerPourCommuniquer() {
-        System.out.println("Le lycanthrope " + this.nom + " émet un hurlement pour communiquer avec d'autres instancesLycanthropes.");
+        System.out.println("Le lycanthrope " + this.nom + " émet un hurlement pour communiquer avec d'autres lycanthropes.");
         this.aHurler = true;
     }
 
@@ -271,8 +271,8 @@ public class Lycanthrope {
                 "\n\tSexe : " + sexe +
                 "\n\tCategories d'âge : " + categorieAge +
                 "\n\tForce : " + force +
-                "\n\tFacteurDomination : " + facteurDomination +
-                "\n\tRangDomination : " + rangDomination +
+                "\n\tFacteur de domination : " + facteurDomination +
+                "\n\tRang de domination : " + rangDomination +
                 "\n\tNiveau : " + niveau +
                 "\n\tFacteur d'impétuosité : " + facteurImpetuosite +
                 "\n\t" + getMeuteToString() +

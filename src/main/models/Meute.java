@@ -111,7 +111,7 @@ public class Meute {
 
         System.out.println("Entrez le couple alpha : ");
         new Meute(nom, new ArrayList<>(List.of(LycanthropeView.choisirLoupGarouSelonSonSex("M"),LycanthropeView.choisirLoupGarouSelonSonSex("F"))), null);
-        System.out.println("meute ajouté avec succès !");
+        System.out.println("Meute ajouté avec succès !");
     }
 
     public void repoductionDesAlphas() {

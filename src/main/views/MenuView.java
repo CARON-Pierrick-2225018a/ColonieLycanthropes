@@ -26,12 +26,12 @@ public class MenuView {
     }
 
     public static void afficherMenuActionPourLycanthropes(Lycanthrope lycanthrope) {
-        System.out.println("\nMenu d'actions pour " + lycanthrope.getNom());
+        System.out.println("\nMenu d'action pour " + lycanthrope.getNom());
         Temps.getDate();
         System.out.println("1. Hurler pour communiquer ");
         System.out.println("2. Entendre un hurlement");
         System.out.println("3. Afficher les informations du lycanthrope ");
-        System.out.println("4. Séparer de la meute ");
+        System.out.println("4. Se séparer de la meute ");
         System.out.println("5. Se transformer en humain ");
         System.out.println("6. Se transformer en lycanthrope  ");
         System.out.println("7. Choisir un autre lycanthrope ");
@@ -41,7 +41,7 @@ public class MenuView {
     }
 
     public static void afficherMenuActionPourMeutes(Meute meute) {
-        System.out.println("\nMenu d'actions pour meute " + meute.getNom());
+        System.out.println("\nMenu d'action pour meute " + meute.getNom());
         Temps.getDate();
         System.out.println("1. Afficher les informations de la meute ");
         System.out.println("2. Ajouter un lycanthrope ");

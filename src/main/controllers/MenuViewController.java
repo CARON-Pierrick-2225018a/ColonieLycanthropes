@@ -145,7 +145,7 @@ public class MenuViewController {
                     break;
                 // Mettre un lycanthrope au rang ω
                 case 4:
-                    System.out.println("Choisie quel lycanthrope tu veux mettre au rang ω :");
+                    System.out.println("Quel lycanthrope voulez-vous mettre au rang ω :");
                     Lycanthrope lycanthropeChoisi = LycanthropeView.choisirLoupGarouDeLaListe(meute.getLycanthropesDeLaMeute());
                     if (!Objects.equals(lycanthropeChoisi, null)){
                         Objects.requireNonNull(lycanthropeChoisi).setRangDomination(Lycanthrope.typesRangDomination.size()-1);
